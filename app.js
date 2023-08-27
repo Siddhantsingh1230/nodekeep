@@ -14,11 +14,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use("/users", userRouter);
 app.use("/task", taskRouter);
-app.use(cors({
-  origin:process.env.FRONTEND_URI,
-  method:["GET","POST","DELETE","PUT"],
-  credentials:true
-}));
+
 
 //environment variables
 configDotenv({
@@ -32,5 +28,9 @@ app.get("/", (req, res) => {
     api_status: "online",
   });
 });
-
+app.use(cors({
+  origin:[process.env.FRONTEND_URI],
+  method:["GET","POST","DELETE","PUT"],
+  credentials:true
+}));
 app.use(errorMiddleware);
