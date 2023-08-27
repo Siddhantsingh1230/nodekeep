@@ -5,7 +5,7 @@ import { sendCookie } from "../utils/features.js";
 export const registerUser = async (req, res) => {
   const { name, email, password } = req.body;
   let user = await userModel.findOne({ email });
-  if (!user) {
+  if (user) {
     return res.status(404).json({
       success: false,
       message: "User already exists",
