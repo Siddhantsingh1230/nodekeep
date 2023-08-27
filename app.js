@@ -15,7 +15,7 @@ app.use(cookieParser());
 app.use("/users", userRouter);
 app.use("/task", taskRouter);
 app.use(cors({
-  origin:[process.env.FRONTEND_URI],
+  origin:process.env.FRONTEND_URI,
   method:["GET","POST","DELETE","PUT"],
   credentials:true
 }));
